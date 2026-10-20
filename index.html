@@ -4,170 +4,208 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Thiago Ribeiro · Engenharia de dados e IA</title>
-<meta name="description" content="Thiago Ribeiro, engenheiro de dados sênior. Pipelines em GCP e Databricks, e produtos próprios com AI Agents.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23d94f2b'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-style='italic' font-weight='700' font-size='40' text-anchor='middle' fill='%23f4efe6'%3Et%3C/text%3E%3C/svg%3E">
+<meta name="description" content="Portfólio de Thiago Ribeiro, engenheiro de dados sênior e construtor de produtos com IA.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230c1118'/%3E%3Cpath d='M16 20h32M32 20v28' stroke='%23f3cd91' stroke-width='6' fill='none'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f4efe6; --ink:#1c1917; --muted:#6b645a; --line:#d9d1c2; --accent:#d94f2b; --hl:#ebe3d3;
-  --serif:"Fraunces",Georgia,serif; --sans:"Hanken Grotesk",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  --bg:#0c1118; --panel:#111823; --ink:#e8edf3; --muted:#93a0b2; --line:#222c39; --line2:#2e3a4a;
+  --accent:#f3cd91; --on:#3fcf7e; --wip:#f0b45a;
+  --spot:rgba(243,205,145,.07);
+  --display:"Sora",system-ui,sans-serif; --body:"Figtree",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
 }
-:root[data-theme="dark"]{--bg:#151311;--ink:#ece5d8;--muted:#9a9184;--line:#2e2a25;--accent:#ff7a4d;--hl:#1e1b18}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){--bg:#151311;--ink:#ece5d8;--muted:#9a9184;--line:#2e2a25;--accent:#ff7a4d;--hl:#1e1b18}
+:root[data-theme="light"]{
+  --bg:#eef0f2; --panel:#ffffff; --ink:#14171c; --muted:#58616e; --line:#d3d8df; --line2:#bcc3cd;
+  --accent:#8a5a12; --on:#1f8a4c; --wip:#b9791a; --spot:rgba(138,90,18,.06);
+}
+@media (prefers-color-scheme:light){
+  :root:not([data-theme="dark"]){
+    --bg:#eef0f2; --panel:#ffffff; --ink:#14171c; --muted:#58616e; --line:#d3d8df; --line2:#bcc3cd;
+    --accent:#8a5a12; --on:#1f8a4c; --wip:#b9791a; --spot:rgba(138,90,18,.06);
+  }
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
 body{
-  background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:1.0625rem;line-height:1.65;
-  -webkit-font-smoothing:antialiased;
-  border-top:6px solid var(--accent);
+  background:radial-gradient(900px 500px at 85% -5%,var(--spot),transparent 70%),var(--bg);
+  background-attachment:fixed;
+  color:var(--ink);font-family:var(--body);font-size:1.04rem;line-height:1.7;-webkit-font-smoothing:antialiased;
 }
-/* papel */
-body::before{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.07;mix-blend-mode:multiply;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-:root[data-theme="dark"] body::before{mix-blend-mode:screen;opacity:.05}
 ::selection{background:var(--accent);color:var(--bg)}
 a{color:inherit}
-.wrap{max-width:1040px;margin:0 auto;padding:0 28px}
-.mono{font-family:var(--mono);font-size:.8rem;letter-spacing:.02em}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+.mono{font-family:var(--mono)}
 
-/* topo */
-.top{display:flex;justify-content:space-between;align-items:center;padding:22px 0;font-family:var(--mono);font-size:.8rem;color:var(--muted)}
-.top b{color:var(--ink);font-weight:500}
-.top button{font:inherit;background:none;border:0;border-bottom:1px solid var(--line);color:var(--muted);cursor:pointer;padding:0 0 1px;margin-left:18px}
-.top button:hover{color:var(--accent);border-color:var(--accent)}
+/* barra */
+nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:58px}
+.mark{font-family:var(--display);font-weight:600;font-size:.95rem;letter-spacing:.01em;text-decoration:none}
+.mark i{font-style:normal;color:var(--accent)}
+.menu{display:flex;align-items:center;gap:26px;font-family:var(--mono);font-size:.76rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.menu a{text-decoration:none}
+.menu a:hover{color:var(--accent)}
+#theme{font:inherit;text-transform:inherit;letter-spacing:inherit;background:none;color:var(--muted);border:1px solid var(--line2);border-radius:6px;padding:5px 10px;cursor:pointer}
+#theme:hover{color:var(--accent);border-color:var(--accent)}
 
 /* hero */
-.hero{padding:72px 0 64px}
-h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.5rem,7.4vw,5.6rem);line-height:1.02;letter-spacing:-.03em;max-width:15ch}
-h1 em{font-style:italic;color:var(--accent);font-weight:400}
-.hero .lead{max-width:34rem;margin-top:30px;color:var(--muted);font-size:1.15rem}
-.facts{margin-top:44px;border-top:1px solid var(--ink);font-family:var(--mono);font-size:.82rem}
-.facts div{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:11px 0;border-bottom:1px solid var(--line)}
-.facts dt{color:var(--muted)}
-.facts a{text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px}
+.hero{padding:96px 0 64px}
+.eyebrow{font-family:var(--mono);font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--accent)}
+h1{font-family:var(--display);font-weight:300;font-size:clamp(2.8rem,9vw,6.4rem);line-height:1;letter-spacing:-.045em;margin:26px 0 22px}
+h1 b{font-weight:600;color:var(--accent)}
+.hero .sub{font-family:var(--display);font-weight:400;font-size:clamp(1.1rem,2.6vw,1.5rem);letter-spacing:-.01em;max-width:34ch}
+.hero .lead{max-width:40rem;margin-top:18px;color:var(--muted);font-size:1.08rem}
+.spec{margin-top:54px;display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:6px;background:var(--panel)}
+.spec div{padding:16px 20px;border-right:1px solid var(--line)}
+.spec div:last-child{border-right:0}
+.spec dt{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.spec dd{margin-top:4px;font-size:.95rem}
 
 /* seções */
-section{padding:56px 0;border-top:1px solid var(--line)}
-.head{display:grid;grid-template-columns:110px 1fr;gap:16px;margin-bottom:34px;align-items:baseline}
-.num{font-family:var(--mono);font-size:.8rem;color:var(--accent)}
-h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.02em;line-height:1.1}
-h2 em{font-style:italic}
-.body{margin-left:126px}
-.about p{max-width:38rem;margin-bottom:1.1em}
-.about p:first-child::first-letter{font-family:var(--serif);font-size:3.4rem;float:left;line-height:.85;padding:6px 10px 0 0;color:var(--accent)}
-.about strong{font-weight:600}
+section{padding:72px 0 8px}
+.sh{display:flex;align-items:baseline;gap:18px;margin-bottom:34px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.sh span{font-family:var(--mono);font-size:.76rem;color:var(--accent);letter-spacing:.1em}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,3.6vw,2.2rem);letter-spacing:-.025em}
+.about{display:grid;grid-template-columns:1.5fr 1fr;gap:56px}
+.about p{margin-bottom:1.1em;color:var(--muted)}
+.about p:first-child{color:var(--ink);font-size:1.2rem;line-height:1.6;font-family:var(--display);font-weight:300;letter-spacing:-.01em}
+.about strong{color:var(--ink);font-weight:600}
+.side{border-left:1px solid var(--line);padding-left:28px;font-size:.95rem}
+.side h3{font-family:var(--mono);font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.side p{margin-bottom:22px;color:var(--ink)}
 
 /* experiência */
-.job{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:26px 0;border-bottom:1px solid var(--line);position:relative}
-.job::before{content:"";position:absolute;left:-14px;top:0;bottom:0;width:3px;background:var(--accent);transform:scaleY(0);transform-origin:top;transition:transform .25s}
+.job{display:grid;grid-template-columns:150px 1fr;gap:24px;padding:26px 0;border-bottom:1px solid var(--line);position:relative}
+.job::before{content:"";position:absolute;left:-16px;top:26px;bottom:26px;width:2px;background:var(--accent);transform:scaleY(0);transition:transform .25s}
 .job:hover::before{transform:scaleY(1)}
-.when{font-family:var(--mono);font-size:.78rem;color:var(--muted);padding-top:7px;line-height:1.5}
-.job h3{font-family:var(--serif);font-weight:600;font-size:1.45rem;letter-spacing:-.01em;line-height:1.2}
-.job .role{font-family:var(--mono);font-size:.8rem;color:var(--accent);margin:3px 0 10px}
-.job p.ctx{color:var(--muted);margin-bottom:8px}
-.job ul{list-style:none}
-.job li{padding-left:20px;position:relative;margin:5px 0}
-.job li::before{content:"–";position:absolute;left:0;color:var(--accent)}
-.tags{font-family:var(--mono);font-size:.76rem;color:var(--muted);margin-top:12px}
-details{border-bottom:1px solid var(--line);padding:22px 0}
-details summary{cursor:pointer;font-family:var(--mono);font-size:.85rem;list-style:none}
-details summary::before{content:"+ ";color:var(--accent)}
-details[open] summary::before{content:"− "}
-details p{margin-top:12px;color:var(--muted);max-width:38rem}
+.when{font-family:var(--mono);font-size:.76rem;color:var(--muted);padding-top:6px;line-height:1.6}
+.job h3{font-family:var(--display);font-weight:600;font-size:1.2rem;letter-spacing:-.015em;line-height:1.3}
+.job .role{color:var(--accent);font-size:.95rem;margin:2px 0 8px}
+.job p{color:var(--muted);max-width:44rem}
+.tags{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font-family:var(--mono);font-size:.7rem;color:var(--muted);border:1px solid var(--line2);border-radius:4px;padding:2px 8px}
+details{padding:22px 0;border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-family:var(--mono);font-size:.8rem;color:var(--muted);list-style:none}
+summary::before{content:"+";color:var(--accent);margin-right:10px}
+details[open] summary::before{content:"−"}
+details p{margin-top:12px;color:var(--muted);max-width:44rem}
 
 /* projetos */
-.proj{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:30px 0;border-bottom:1px solid var(--line);text-decoration:none}
-.proj .n{font-family:var(--mono);font-size:.8rem;color:var(--muted);padding-top:12px}
-.proj h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.7rem,4vw,2.5rem);letter-spacing:-.02em;line-height:1.1;display:inline}
-.proj h3 span{display:inline-block;transition:transform .2s;color:var(--accent);font-family:var(--sans)}
-a.proj:hover h3{text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:6px}
-a.proj:hover h3 span{transform:translate(4px,-4px)}
-.proj p{margin-top:10px;max-width:36rem;color:var(--muted)}
-.proj .meta{font-family:var(--mono);font-size:.76rem;color:var(--muted);margin-top:12px}
-.proj .meta i{font-style:normal;color:var(--accent)}
+.pgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.p{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:26px;display:flex;flex-direction:column;text-decoration:none;transition:border-color .2s,transform .2s;min-height:260px}
+a.p:hover{border-color:var(--accent);transform:translateY(-2px)}
+.st{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:8px}
+.st i{width:7px;height:7px;border-radius:50%;background:var(--on);box-shadow:0 0 0 3px color-mix(in srgb,var(--on) 22%,transparent)}
+.st.wip i{background:var(--wip);box-shadow:0 0 0 3px color-mix(in srgb,var(--wip) 22%,transparent)}
+.p h3{font-family:var(--display);font-weight:400;font-size:1.65rem;letter-spacing:-.03em;margin:16px 0 10px;line-height:1.15}
+.p h3 s{text-decoration:none;color:var(--accent);margin-left:6px;display:inline-block;transition:transform .2s}
+a.p:hover h3 s{transform:translate(3px,-3px)}
+.p p{color:var(--muted);font-size:.97rem;flex:1}
+.p .ft{margin-top:20px;padding-top:14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:.72rem;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.p .ft em{font-style:normal;color:var(--accent)}
 
 /* stack */
-.stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px 32px}
-.stack h3{font-family:var(--mono);font-weight:500;font-size:.78rem;color:var(--accent);margin-bottom:8px}
-.stack p{font-size:.98rem;line-height:1.8}
+.stack{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:6px;background:var(--panel)}
+.stack div{padding:22px 24px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stack div:nth-child(3n){border-right:0}
+.stack div:nth-last-child(-n+3){border-bottom:0}
+.stack h3{font-family:var(--mono);font-weight:500;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.stack p{font-size:.97rem;color:var(--ink);line-height:1.85}
 
 /* formação */
-.edu li{list-style:none;padding:12px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-.edu li span{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
-.certs{margin-top:20px;color:var(--muted);font-size:.95rem;max-width:40rem}
+.edu{list-style:none}
+.edu li{padding:14px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.edu li span{font-family:var(--mono);font-size:.76rem;color:var(--muted)}
+.certs{margin-top:22px;color:var(--muted);font-size:.95rem;max-width:46rem}
 
-/* contato */
-.contact{padding:80px 0 70px}
-.contact h2{font-size:clamp(2.4rem,8vw,5.2rem);line-height:1;margin-bottom:28px}
-.contact h2 em{color:var(--accent)}
-.contact .lnk{display:flex;gap:28px;flex-wrap:wrap;font-family:var(--serif);font-size:1.5rem}
-.contact .lnk a{text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:6px}
-.contact .lnk a:hover{color:var(--accent)}
-footer{border-top:1px solid var(--line);padding:24px 0 40px;font-family:var(--mono);font-size:.76rem;color:var(--muted)}
+footer{margin-top:80px;border-top:1px solid var(--line);padding:26px 0 44px;font-family:var(--mono);font-size:.74rem;color:var(--muted)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{text-decoration:none;margin-left:18px}
+footer a:hover{color:var(--accent)}
 
-.rv{opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}
+.rv{opacity:0;transform:translateY(12px);transition:opacity .6s,transform .6s}
 .rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 
-@media(max-width:720px){
+@media(max-width:820px){
   .wrap{padding:0 20px}
-  .head,.job,.proj,.facts div{grid-template-columns:1fr;gap:4px}
-  .body{margin-left:0}
-  .when{padding-top:0}
-  .proj .n{padding-top:0}
+  .menu a{display:none}
+  .spec{grid-template-columns:1fr 1fr}
+  .spec div:nth-child(2){border-right:0}
+  .spec div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .about{grid-template-columns:1fr;gap:28px}
+  .side{border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:24px}
+  .job{grid-template-columns:1fr;gap:4px}
   .job::before{display:none}
-  .hero{padding:44px 0 44px}
+  .when{padding-top:0}
+  .pgrid{grid-template-columns:1fr}
+  .stack{grid-template-columns:1fr 1fr}
+  .stack div:nth-child(3n){border-right:1px solid var(--line)}
+  .stack div:nth-child(2n){border-right:0}
+  .stack div:nth-last-child(-n+3){border-bottom:1px solid var(--line)}
+  .stack div:nth-last-child(-n+2){border-bottom:0}
+  .hero{padding:60px 0 40px}
 }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <div class="top">
-    <b>thiago ribeiro</b>
-    <span><span id="clock">--:--</span> BRT<button id="theme" type="button">claro / escuro</button></span>
+<nav>
+  <div class="wrap">
+    <a class="mark" href="#top">Thiago Ribeiro<i>.</i></a>
+    <div class="menu">
+      <a href="#sobre">Sobre</a>
+      <a href="#experiencia">Experiência</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#stack">Stack</a>
+      <button id="theme" type="button">tema</button>
+    </div>
   </div>
+</nav>
+
+<main class="wrap" id="top">
 
   <header class="hero">
-    <h1>Faço dados espalhados virarem algo em que dá pra <em>confiar</em>.</h1>
-    <p class="lead">Engenheiro de dados sênior, com mais de dez anos de estrada. De dia, pipelines em nuvem. No resto do tempo, produtos próprios com IA.</p>
-    <dl class="facts">
-      <div><dt>agora</dt><dd>Engenheiro de Dados Sênior na Globo</dd></div>
-      <div><dt>ferramentas</dt><dd>GCP, Databricks, PySpark, SQL, Terraform, Airflow</dd></div>
-      <div><dt>também</dt><dd>professor de pós-graduação e construtor de SaaS com AI Agents</dd></div>
-      <div><dt>status</dt><dd>aberto a conversas sobre dados e IA · <a href="#contato">falar comigo</a></dd></div>
+    <div class="eyebrow">Portfólio</div>
+    <h1>Thiago <b>Ribeiro</b></h1>
+    <p class="sub">Engenheiro de dados sênior e construtor de produtos com IA.</p>
+    <p class="lead">Mais de dez anos transformando dados dispersos em informação confiável, e criando produtos próprios com AI Agents, visão computacional e LLMs.</p>
+    <dl class="spec">
+      <div><dt>Área</dt><dd>Dados e IA</dd></div>
+      <div><dt>Experiência</dt><dd>10+ anos</dd></div>
+      <div><dt>Nuvens</dt><dd>GCP · Azure · Databricks</dd></div>
+      <div><dt>Idiomas</dt><dd>Português · Inglês</dd></div>
     </dl>
   </header>
 
   <section id="sobre" class="rv">
-    <div class="head"><span class="num">01</span><h2>Sobre</h2></div>
-    <div class="body about">
-      <p>Hoje eu faço engenharia de dados em nuvem, com <strong>GCP e Databricks</strong>. Na <strong>Globo</strong>, entrego dados para uma rede de parceiros de negócio em todo o Brasil. Cada parceiro enxerga só o que é dele, e isso exige isolamento, governança e atenção ao SLA.</p>
-      <p>Gosto da parte em que a conversa com o negócio vira arquitetura: levantar regra com quem decide, propor melhoria e desenhar a solução antes de escrever o primeiro job.</p>
-      <p>Comecei a carreira em análise de crédito, em 2007, e fui migrando para dados até chegar aqui. Em paralelo, construo produtos próprios com LLMs e visão computacional, e ensino GCP numa pós-graduação.</p>
+    <div class="sh"><span>01</span><h2>Sobre</h2></div>
+    <div class="about">
+      <div>
+        <p>Projeto e construo pipelines escaláveis e arquiteturas Lakehouse que levam o dado certo até quem precisa dele.</p>
+        <p>Trabalho com engenharia de dados em nuvem, principalmente em <strong>GCP</strong> e <strong>Databricks</strong>, com passagens por <strong>Azure</strong>. Gosto de começar pelo problema de negócio: ouvir quem decide, levantar as regras e desenhar a arquitetura antes de escrever o primeiro job.</p>
+        <p>Comecei a carreira em análise de crédito, em 2007, e fui migrando para dados. Hoje, além do trabalho, construo meus próprios produtos com <strong>AI Agents</strong> e ensino engenharia de dados em GCP numa pós-graduação.</p>
+      </div>
+      <aside class="side">
+        <h3>Foco</h3><p>Pipelines em larga escala, Lakehouse e Medallion, infraestrutura como código.</p>
+        <h3>Construo</h3><p>Aplicações com LLMs, OCR e visão computacional, do protótipo ao produto.</p>
+        <h3>Ensino</h3><p>Instrutor do módulo de Engenharia de Dados em GCP numa pós-graduação.</p>
+      </aside>
     </div>
   </section>
 
   <section id="experiencia" class="rv">
-    <div class="head"><span class="num">02</span><h2>Experiência</h2></div>
+    <div class="sh"><span>02</span><h2>Experiência</h2></div>
 
     <div class="job">
-      <div class="when">mai 2025<br>→ hoje</div>
+      <div class="when">mai 2025<br>→ presente</div>
       <div>
         <h3>Globo</h3>
         <div class="role">Engenheiro de Dados Sênior</div>
-        <p class="ctx">Dados para parceiros de negócio em todo o Brasil, no modelo multi-tenant.</p>
-        <ul>
-          <li>Pipelines em GCP processando centenas de GB por dia, com Dataproc/PySpark e BigQuery.</li>
-          <li>Orquestração com Cloud Composer (Airflow) e acompanhamento dos SLAs de entrega.</li>
-          <li>Infraestrutura como código com Terraform e deploys via CI/CD.</li>
-        </ul>
+        <p>Pipelines em larga escala na Google Cloud, com orquestração, acompanhamento de SLAs, infraestrutura como código e entrega contínua.</p>
+        <div class="tags"><span>GCP</span><span>Dataproc</span><span>PySpark</span><span>BigQuery</span><span>Cloud Composer</span><span>Terraform</span><span>CI/CD</span></div>
       </div>
     </div>
 
@@ -175,12 +213,9 @@ footer{border-top:1px solid var(--line);padding:24px 0 40px;font-family:var(--mo
       <div class="when">jun 2024<br>→ mai 2025</div>
       <div>
         <h3>act digital</h3>
-        <div class="role">Engenheiro de Dados Sênior · alocado na Globo</div>
-        <p class="ctx">Squad de proteção de conteúdo digital e combate à pirataria.</p>
-        <ul>
-          <li>Bases analíticas para identificar e monitorar a distribuição não autorizada de conteúdo.</li>
-          <li>Contratado direto pela Globo ao fim da alocação, em reconhecimento à qualidade das entregas.</li>
-        </ul>
+        <div class="role">Engenheiro de Dados Sênior · consultoria</div>
+        <p>Pipelines de ingestão, processamento e análise em GCP, provisionados com Terraform. Contratado diretamente pelo cliente ao fim da alocação.</p>
+        <div class="tags"><span>GCP</span><span>Dataproc</span><span>PySpark</span><span>BigQuery</span><span>Python</span><span>Terraform</span></div>
       </div>
     </div>
 
@@ -189,11 +224,8 @@ footer{border-top:1px solid var(--line);padding:24px 0 40px;font-family:var(--mo
       <div>
         <h3>Bridgestone Americas</h3>
         <div class="role">Consultor Sênior de Engenharia de Dados</div>
-        <p class="ctx">Data Lake do zero com Databricks e arquitetura Medallion.</p>
-        <ul>
-          <li>Ingestão de campanhas publicitárias e dados do Salesforce nas camadas bronze, silver e gold.</li>
-          <li>Consolidações manuais deram lugar a indicadores automatizados.</li>
-        </ul>
+        <p>Construção de um Data Lake do zero com Databricks e arquitetura Medallion (bronze, silver e gold), no lugar de consolidações manuais.</p>
+        <div class="tags"><span>Databricks</span><span>Delta Lake</span><span>Medallion</span><span>Salesforce</span></div>
       </div>
     </div>
 
@@ -202,11 +234,8 @@ footer{border-top:1px solid var(--line);padding:24px 0 40px;font-family:var(--mo
       <div>
         <h3>Indústria farmacêutica</h3>
         <div class="role">Consultor Sênior de Engenharia de Dados</div>
-        <p class="ctx">Pipelines de marketing analytics para acompanhar campanhas.</p>
-        <ul>
-          <li>Coleta de Google Ads, Meta Ads e GA4, com tabelas modeladas para análise de desempenho.</li>
-          <li>Visão unificada de mídia paga para apoiar decisões de investimento.</li>
-        </ul>
+        <p>Pipelines de marketing analytics para acompanhar campanhas, com tabelas modeladas para análise de desempenho.</p>
+        <div class="tags"><span>Google Ads</span><span>Meta Ads</span><span>GA4</span><span>SQL</span></div>
       </div>
     </div>
 
@@ -215,11 +244,8 @@ footer{border-top:1px solid var(--line);padding:24px 0 40px;font-family:var(--mo
       <div>
         <h3>Wipro</h3>
         <div class="role">Engenheiro de Dados Sênior</div>
-        <p class="ctx">Integração de dados para uma instituição bancária.</p>
-        <ul>
-          <li>API com JSON complexo da posição de investimentos dos clientes.</li>
-          <li>Pipelines em Azure (Blob Storage, Data Factory, SQL, Key Vault) e Databricks.</li>
-        </ul>
+        <p>Integração de dados e automação de processos no setor bancário, com foco em segurança e eficiência. Disponibilização de dados via API.</p>
+        <div class="tags"><span>Azure</span><span>Data Factory</span><span>Key Vault</span><span>Databricks</span><span>SQL</span></div>
       </div>
     </div>
 
@@ -228,11 +254,8 @@ footer{border-top:1px solid var(--line);padding:24px 0 40px;font-family:var(--mo
       <div>
         <h3>Anhanguera Educacional</h3>
         <div class="role">Professor de Pós-Graduação</div>
-        <p class="ctx">Criei e gravei o módulo de Engenharia de Dados em GCP.</p>
-        <ul>
-          <li>Projeto de ponta a ponta: um pipeline de análise de sentimentos na Google Cloud.</li>
-          <li>Material assíncrono, acessado continuamente pelas turmas.</li>
-        </ul>
+        <p>Criei e gravei o módulo de Engenharia de Dados em GCP, com um projeto de ponta a ponta: pipeline de análise de sentimentos. O material segue sendo acessado pelas turmas.</p>
+        <div class="tags"><span>Cloud Storage</span><span>Cloud Functions</span><span>Dataproc</span><span>BigQuery</span><span>Airflow</span></div>
       </div>
     </div>
 
@@ -241,94 +264,82 @@ footer{border-top:1px solid var(--line);padding:24px 0 40px;font-family:var(--mo
       <div>
         <h3>Accenture Brasil</h3>
         <div class="role">Engenheiro de Dados Pleno</div>
-        <ul>
-          <li>Extração e normalização de múltiplas fontes com SQL e Spark.</li>
-          <li>Dashboards em Tableau e extratores de relatório em Python e SQL sobre o BigQuery.</li>
-          <li>Migração de bancos entre ambientes e um sistema de avaliação de viabilidade de operações.</li>
-        </ul>
+        <p>Extração, normalização e migração de dados de múltiplas fontes, dashboards em Tableau e extratores de relatórios sobre o BigQuery.</p>
+        <div class="tags"><span>SQL</span><span>Spark</span><span>Python</span><span>Tableau</span><span>BigQuery</span></div>
       </div>
     </div>
 
     <details>
-      <summary>antes dos dados: crédito e análise, 2007 a 2021</summary>
+      <summary>Antes dos dados: crédito e análise, 2007 a 2021</summary>
       <p>Analista de dados de crédito na Zamboni Comercial (2019–2021) e na Lecca (2014–2019), com análise de risco e liquidez e relatórios gerenciais. Antes, análise de crédito na Credifibra, back office na DS Card e funções comerciais e de frota na Unilider e na GVI.</p>
     </details>
   </section>
 
   <section id="projetos" class="rv">
-    <div class="head"><span class="num">03</span><h2>Projetos <em>meus</em></h2></div>
+    <div class="sh"><span>03</span><h2>Projetos próprios</h2></div>
+    <div class="pgrid">
 
-    <a class="proj" href="https://www.mobixia.com.br/" target="_blank" rel="noopener">
-      <span class="n">no ar</span>
-      <div>
-        <h3>MobiX-IA <span>↗</span></h3>
-        <p>CRM imobiliário com IA. Lê fichas manuscritas por visão computacional e OCR, joga tudo numa planilha e monta o funil de vendas com tarefas, agenda e mensagens personalizadas para os clientes.</p>
-        <div class="meta">AI Agents · LLM · OCR · <i>mobixia.com.br</i></div>
-      </div>
-    </a>
+      <a class="p" href="https://www.mobixia.com.br/" target="_blank" rel="noopener">
+        <div class="st"><i></i>No ar</div>
+        <h3>MobiX-IA<s>↗</s></h3>
+        <p>CRM imobiliário com IA. Lê fichas manuscritas com visão computacional e OCR, converte para planilhas e organiza funil, agenda e mensagens personalizadas para os clientes.</p>
+        <div class="ft"><span>AI Agents · LLM · OCR</span><em>mobixia.com.br</em></div>
+      </a>
 
-    <a class="proj" href="https://mylivestudio.com.br/" target="_blank" rel="noopener">
-      <span class="n">no ar</span>
-      <div>
-        <h3>My Live Studio <span>↗</span></h3>
-        <p>A sala de controle das minhas lives de 24 horas no YouTube. A cena acompanha o relógio, a playlist se renova sozinha de madrugada e um vigia avisa no celular se a transmissão cair.</p>
-        <div class="meta">API do YouTube · ffmpeg · Docker · Python · <i>mylivestudio.com.br</i></div>
-      </div>
-    </a>
+      <a class="p" href="https://mylivestudio.com.br/" target="_blank" rel="noopener">
+        <div class="st"><i></i>No ar</div>
+        <h3>My Live Studio<s>↗</s></h3>
+        <p>Sala de controle para transmissões contínuas no YouTube. Integra a API do YouTube para agendar, organizar e acompanhar lives de 24 horas.</p>
+        <div class="ft"><span>YouTube API · ffmpeg · Docker</span><em>mylivestudio.com.br</em></div>
+      </a>
 
-    <a class="proj" href="https://thigaoribeiro.github.io/escala-irmaos/" target="_blank" rel="noopener">
-      <span class="n">no ar</span>
-      <div>
-        <h3>Lessa Care <span>↗</span></h3>
-        <p>SaaS multiusuário para organizar a escala de cuidados da família: distribuição de turnos, lembretes e uma visão compartilhada entre todos os participantes.</p>
-        <div class="meta">AI Agents · <i>thigaoribeiro.github.io/escala-irmaos</i></div>
-      </div>
-    </a>
+      <a class="p" href="https://thigaoribeiro.github.io/escala-irmaos/" target="_blank" rel="noopener">
+        <div class="st"><i></i>No ar</div>
+        <h3>Lessa Care<s>↗</s></h3>
+        <p>SaaS multiusuário para organizar escalas e agendamentos de cuidados, com distribuição de turnos, lembretes e visão compartilhada entre os participantes.</p>
+        <div class="ft"><span>AI Agents · SaaS</span><em>escala-irmaos</em></div>
+      </a>
 
-    <div class="proj">
-      <span class="n">em obras</span>
-      <div>
+      <div class="p">
+        <div class="st wip"><i></i>Em desenvolvimento</div>
         <h3>Planejador de viagens</h3>
-        <p>SaaS com AI Agents que sugere e organiza roteiros pelos parques de Orlando, otimizando dias, atrações e logística da viagem.</p>
-        <div class="meta">AI Agents · LLM</div>
+        <p>SaaS com AI Agents que sugere e organiza roteiros pelos parques temáticos de Orlando, otimizando dias, atrações e logística da viagem.</p>
+        <div class="ft"><span>AI Agents · LLM</span><em>em breve</em></div>
       </div>
+
     </div>
   </section>
 
   <section id="stack" class="rv">
-    <div class="head"><span class="num">04</span><h2>Ferramentas</h2></div>
-    <div class="body stack">
-      <div><h3>linguagens</h3><p>Python<br>SQL<br>PySpark</p></div>
-      <div><h3>google cloud</h3><p>BigQuery<br>Dataproc<br>Cloud Composer<br>Cloud Functions<br>Cloud Storage</p></div>
-      <div><h3>databricks e azure</h3><p>Delta Lake, Medallion<br>Data Factory<br>Key Vault</p></div>
-      <div><h3>plataforma</h3><p>Terraform<br>Airflow<br>CI/CD<br>Tableau</p></div>
-      <div><h3>ia</h3><p>AI Agents<br>LLMs<br>Visão computacional<br>OCR</p></div>
-      <div><h3>idiomas</h3><p>Português, nativo<br>Inglês, full professional</p></div>
+    <div class="sh"><span>04</span><h2>Stack</h2></div>
+    <div class="stack">
+      <div><h3>Linguagens</h3><p>Python<br>SQL<br>PySpark</p></div>
+      <div><h3>Google Cloud</h3><p>BigQuery · Dataproc<br>Cloud Composer<br>Cloud Functions · Storage</p></div>
+      <div><h3>Databricks e Azure</h3><p>Delta Lake · Medallion<br>Data Factory<br>Key Vault</p></div>
+      <div><h3>Plataforma</h3><p>Terraform · Airflow<br>CI/CD<br>Tableau</p></div>
+      <div><h3>IA</h3><p>AI Agents · LLMs<br>Visão computacional<br>OCR</p></div>
+      <div><h3>Idiomas</h3><p>Português, nativo<br>Inglês, full professional</p></div>
     </div>
   </section>
 
   <section id="formacao" class="rv">
-    <div class="head"><span class="num">05</span><h2>Formação</h2></div>
-    <div class="body">
-      <ul class="edu">
-        <li>MBA em Engenharia de Dados, Escola Politécnica da UFRJ<span>2022–2023</span></li>
-        <li>Análise e Desenvolvimento de Sistemas, UniCesumar<span>2021–2022</span></li>
-        <li>Desenvolvimento de Sistemas para Internet, UniCesumar<span>2018–2021</span></li>
-      </ul>
-      <p class="certs">Certificações: Microsoft Certified Azure Fundamentals, Scrum Foundation (SFPC), Big Data Fundamentos 3.0, Cloud Fundamentals, Administration and Solution Architect, Modelagem de Dados.</p>
-    </div>
+    <div class="sh"><span>05</span><h2>Formação</h2></div>
+    <ul class="edu">
+      <li>MBA em Engenharia de Dados · Escola Politécnica da UFRJ<span>2022–2023</span></li>
+      <li>Análise e Desenvolvimento de Sistemas · UniCesumar<span>2021–2022</span></li>
+      <li>Desenvolvimento de Sistemas para Internet · UniCesumar<span>2018–2021</span></li>
+    </ul>
+    <p class="certs">Certificações: Microsoft Certified Azure Fundamentals, Scrum Foundation (SFPC), Big Data Fundamentos 3.0, Cloud Fundamentals, Administration and Solution Architect, Modelagem de Dados.</p>
   </section>
 
-  <section id="contato" class="contact rv">
-    <h2>Bora <em>conversar?</em></h2>
-    <div class="lnk">
-      <a href="https://www.linkedin.com/in/thiago-ribeirosilva" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://github.com/ThigaoRibeiro" target="_blank" rel="noopener">GitHub</a>
-    </div>
-  </section>
+</main>
 
-  <footer>Escrito à mão, sem framework. Hospedado no GitHub Pages. © <span id="year"></span> Thiago Ribeiro</footer>
-</div>
+<footer>
+  <div class="wrap">
+    <span>© <span id="year"></span> Thiago Ribeiro</span>
+    <span><a href="https://www.linkedin.com/in/thiago-ribeirosilva" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/ThigaoRibeiro" target="_blank" rel="noopener">GitHub</a></span>
+  </div>
+</footer>
 
 <script>
 (function(){
@@ -336,15 +347,11 @@ footer{border-top:1px solid var(--line);padding:24px 0 40px;font-family:var(--mo
   try{var t=localStorage.getItem('theme'); if(t) root.setAttribute('data-theme',t);}catch(e){}
   document.getElementById('theme').addEventListener('click',function(){
     var cur=root.getAttribute('data-theme');
-    var dark=cur?cur==='dark':matchMedia('(prefers-color-scheme:dark)').matches;
+    var dark=cur?cur==='dark':!matchMedia('(prefers-color-scheme:light)').matches;
     var next=dark?'light':'dark';
     root.setAttribute('data-theme',next);
     try{localStorage.setItem('theme',next);}catch(e){}
   });
-  function tick(){
-    try{document.getElementById('clock').textContent=new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit',timeZone:'America/Sao_Paulo'});}catch(e){}
-  }
-  tick(); setInterval(tick,15000);
   document.getElementById('year').textContent=new Date().getFullYear();
   var els=document.querySelectorAll('.rv');
   if('IntersectionObserver' in window){
